@@ -1,0 +1,3282 @@
+%!PS-Adobe-3.0 EPSF-3.0
+%%BoundingBox: 0 0 1600 900     
+%
+% The bounding box gives the (x,y) coordinates for the lower 
+% left corner and the upper right corner of the viewing window.
+% Don't change this.
+
+1 setlinejoin
+1 setlinecap
+
+/distance{
+    sub
+    dup mul
+    3 1 roll
+    sub
+    dup mul
+    add
+    sqrt
+} def
+
+/square {4 dict begin
+    /s exch def
+    /g exch def
+    /y exch def
+    /x exch def
+    g setgray
+    newpath
+    x y moveto
+    s 0 rlineto
+    0 s rlineto
+    s neg 0 rlineto
+    closepath
+    fill
+end } def
+
+/rectangle {5 dict begin
+    /h exch def
+    /w exch def
+    /g exch def
+    /y exch def
+    /x exch def
+    g setgray
+    newpath
+    x y moveto
+    w 0 rlineto
+    0 h rlineto
+    w neg 0 rlineto
+    closepath
+    fill
+end } def
+
+% Scale Scene1A and Scene1B, t in range [75,0]
+/scale1 {1 dict begin
+    /t exch def
+    /cx 425 t sub def
+    800 450 translate
+    4.9 dup scale
+    cx neg 350 neg translate
+end } def
+
+% Scale Scene2A, a in range [0,90]
+/scale2A {1 dict begin
+    /a exch def
+    /cx a sin 75 mul 425 add def
+    800 450 translate
+    4.9 dup scale
+    cx neg 350 neg translate
+end } def
+
+% Scale Scene2B, b in range [0,4]
+/scale2B {1 dict begin
+    /b exch def
+    /cy b sin 100 mul neg 350 add def
+    800 450 translate
+    4.9 dup scale
+    500 neg cy neg translate 
+end } def
+
+% Scale Scene3A, Scene3B, and Scene4A for b in range [0,90]
+/scale3 {1 dict begin
+    /b exch def
+    b 4 lt {
+        /z 4.9 def
+        /cy 343.024 def
+    }{
+        /z b sin 100 mul 84.861 add 450 exch div def
+        /cy b sin 100 mul neg 350 add def
+    } ifelse
+    800 450 translate
+    z dup scale
+    500 neg cy neg translate
+end } def
+
+% Scale Scene4B for c in range [0,90]
+/scale4B {1 dict begin
+    /c exch def
+    /cx c sin 150 mul neg 500 add def
+    800 450 translate
+    2.43 dup scale
+    cx neg 250 neg translate
+end } def
+
+% Scale Scene5A, Scene5B, Scene6B, and Scene7A for d in range [0,90]
+/scale5 {1 dict begin
+    /d exch def
+    /z d sin 260 mul 185.185 add 450 exch div def
+    /cy d sin 250 mul 250 add def
+    800 450 translate
+    z dup scale
+    350 neg cy neg translate
+end } def
+
+% Scale Scene5B and Scene6A (including flashback) for d in range [50,75]
+/scale6 {1 dict begin
+    /d exch def
+    d 83 le {
+        /z 1.01226 def
+        /cy d sin 125 mul 374.0683 add def
+    }{
+        /z d sin 260 mul 185.185 add 450 exch div def
+        /cy d sin 250 mul 250 add def
+    } ifelse
+    800 450 translate
+    z dup scale
+    350 neg cy neg translate
+end } def
+
+% Scale Scene7A and Scene7B for e in range [0,90]
+/scale7 {1 dict begin
+    /e exch def
+    /cx e sin 400 mul 350 add def
+    800 450 translate
+    1.01082 dup scale
+    cx neg 500 neg translate
+end } def
+
+%  Draw line 1 from (400,300) to (400,400)
+/line1 {1 dict begin
+  /g exch def
+  g setgray
+  newpath
+  400 300 moveto
+  400 400 lineto
+  stroke
+end } def
+
+%  Draw line 2 from (500,300) to (500,400)
+/line2 {1 dict begin
+  /g exch def
+  g setgray
+  newpath
+  500 300 moveto
+  500 400 lineto
+  stroke
+end } def
+
+%  Draw line 3 from (400,400) to (500,400)
+/line3 {1 dict begin
+  /g exch def
+  g setgray
+  newpath
+  400 400 moveto
+  500 400 lineto
+  stroke
+end } def
+
+%  Draw line 4 from (400,300) to (500,300)
+/line4 {1 dict begin
+  /g exch def
+  g setgray
+  newpath
+  400 300 moveto
+  500 300 lineto
+  stroke
+end } def
+
+%  Draw line 5 from (400,400) to (400,300+100cos(a))
+/line5 {2 dict begin
+  /a exch def
+  /g exch def
+  g setgray
+  newpath
+  400 400 moveto 
+  400 
+  a cos 100 mul 300 add lineto
+  stroke
+end } def
+
+%  Draw line 6 from (500,400) to (500+100((1-cos(a))/sin(a)),400) if a>0
+/line6 {2 dict begin
+  /a exch def
+  /g exch def
+  g setgray
+  a 0 gt {
+    newpath
+    500 400 moveto 
+    a cos neg 1 add a sin div 100 mul 500 add 
+    400 lineto
+    stroke
+  } if
+end } def
+
+%  Draw line 7 from (400,300) to (400+100sin(a),300+100cos(a))
+/line7 {2 dict begin
+  /a exch def
+  /g exch def
+  g setgray
+  newpath
+  400 300 moveto 
+  a sin 100 mul 400 add 
+  a cos 100 mul 300 add lineto
+  stroke
+end } def
+
+%  Draw line 8 from (500,300) to (500+100sin(a),300+100cos(a))
+/line8 {2 dict begin
+  /a exch def
+  /g exch def
+  g setgray
+  newpath
+  500 300 moveto 
+  a sin 100 mul 500 add 
+  a cos 100 mul 300 add lineto
+  stroke
+end } def
+
+%  Draw line 9 from (500,300) to (600,300)
+/line9 {1 dict begin
+  /g exch def
+  g setgray
+  newpath
+  500 300 moveto
+  600 300 lineto
+  stroke
+end } def
+
+%  Draw line 10 from (600,300) to (600,400)
+/line10 {1 dict begin
+  /g exch def
+  g setgray
+  newpath
+  600 300 moveto
+  600 400 lineto
+  stroke
+end } def
+
+%  Draw line 11 from (500,400) to (600,400)
+/line11 {1 dict begin
+  /g exch def
+  g setgray
+  newpath
+  500 400 moveto
+  600 400 lineto
+  stroke
+end } def
+
+%  Draw line 12 from (400,300) to (400+200cos(b),300-200sin(b))
+/line12 {2 dict begin
+  /b exch def
+  /g exch def
+  g setgray
+  newpath
+  400 300 moveto 
+  b cos 200 mul 400 add 
+  b sin 200 mul neg 300 add lineto
+  stroke
+end } def
+
+%  Draw line 13 from (600,300) to (600,300-200((1-cos(b))/sin(b))) if b>0
+/line13 {2 dict begin
+  /b exch def
+  /g exch def
+  g setgray
+  b 0 gt {
+    newpath
+    600 300 moveto 
+    600 
+    b cos neg 1 add b sin div 200 mul neg 300 add lineto
+    stroke
+  } if
+end } def
+
+%  Draw line 14 from (600,300) to (600,100)
+/line14 {1 dict begin
+  /g exch def
+  g setgray
+  newpath
+  600 300 moveto
+  600 100 lineto
+  stroke
+end } def
+
+%  Draw line 15 from (400,300) to (400,100)
+/line15 {1 dict begin
+  /g exch def
+  g setgray
+  newpath
+  400 300 moveto
+  400 100 lineto
+  stroke
+end } def
+
+%  Draw line 16 from (600,100) to (400,100)
+/line16 {1 dict begin
+  /g exch def
+  g setgray
+  newpath
+  600 100 moveto
+  400 100 lineto
+  stroke
+end } def
+
+%  Draw line 17 from (400,400) to (400-300cos(c),400-300cos(c))
+/line17 {2 dict begin
+  /c exch def
+  /g exch def
+  g setgray
+  newpath
+  400 400 moveto 
+  c sin 300 mul neg 400 add 
+  c cos 300 mul neg 400 add lineto
+  stroke
+end } def
+
+%  Draw line 18 from (500,400) to (500,300+100cos(3b)) if c<30
+/line18 {2 dict begin
+  /c exch def
+  /g exch def
+  g setgray
+  c 30 lt {
+    newpath
+    500 400 moveto 
+    500 
+    c 3 mul cos 100 mul 300 add lineto
+    stroke
+  }{
+    newpath
+    500 400 moveto
+    500 300 lineto
+    stroke 
+  } ifelse
+end } def
+
+%  Draw line 19 from (400,100) to (400-300((1-cos(c))/sin(c)),100) if c>0
+/line19 {2 dict begin
+  /c exch def
+  /g exch def
+  g setgray
+  c 0 gt {
+    newpath
+    400 100 moveto 
+    c cos neg 1 add c sin div 300 mul neg 400 add 
+    100 lineto
+    stroke
+  } if
+end } def
+
+%  Draw line 20 from (400,100) to (100,100)
+/line20 {1 dict begin
+  /g exch def
+  g setgray
+  newpath
+  400 100 moveto
+  100 100 lineto
+  stroke
+end } def
+
+%  Draw line 21 from (100,400) to (400,400)
+/line21 {1 dict begin
+  /g exch def
+  g setgray
+  newpath
+  100 400 moveto
+  400 400 lineto
+  stroke
+end } def
+
+%  Draw line 22 from (100,100) to (100,400)
+/line22 {1 dict begin
+  /g exch def
+  g setgray
+  newpath
+  100 100 moveto
+  100 400 lineto
+  stroke
+end } def
+
+%  Draw line 23 from (600,400) to (600-500cos(d),400+500sin(d))
+/line23 {2 dict begin
+  /d exch def
+  /g exch def
+  g setgray
+  newpath
+  600 400 moveto 
+  d cos 500 mul neg 600 add 
+  d sin 500 mul 400 add lineto
+  stroke
+end } def
+
+%  Draw line 24 from (600,300) to (400+200cos((5/2)d),300) if d<24
+/line24 {2 dict begin
+  /d exch def
+  /g exch def
+  g setgray
+  d 24 lt
+  {
+    newpath
+    600 300 moveto  
+    5 2 div d mul cos 200 mul 400 add
+    300 lineto
+    stroke
+  }{
+    newpath
+    600 300 moveto
+    500 300 lineto
+    stroke
+  } ifelse
+end } def
+
+%  Draw line 25 from (100,400) to (100,400+500((1-cos(d))/sin(d))) if d>0
+/line25 {2 dict begin
+  /d exch def
+  /g exch def
+  g setgray
+  d 0 gt
+  {
+    newpath
+    100 400 moveto
+    100
+    d cos neg 1 add d sin div 500 mul 400 add lineto
+    stroke
+  } if
+end } def
+
+%  Draw line 26 from (100,400) to (100,900)
+/line26 {1 dict begin
+  /g exch def
+  g setgray
+  newpath
+  100 400 moveto
+  100 900 lineto
+  stroke
+end } def
+
+%  Draw line 27 from (600,900) to (600,400)
+/line27 {1 dict begin
+  /g exch def
+  g setgray
+  newpath
+  600 900 moveto
+  600 400 lineto
+  stroke
+end } def
+
+%  Draw line 28 from (100,900) to (600,900)
+/line28 {1 dict begin
+  /g exch def
+  g setgray
+  newpath
+  100 900 moveto
+  600 900 lineto
+  stroke
+end } def
+
+%  Draw line 29 from (600,100) to (600+800sin(e),100+800cos(e))
+/line29 {2 dict begin
+  /e exch def
+  /g exch def
+  g setgray
+  newpath
+  600 100 moveto 
+  e sin 800 mul 600 add 
+  e cos 800 mul 100 add lineto
+  stroke
+end } def
+
+%  Draw line 30 from (400,100) to (400,400-300cos((8/3)e)) if e<26.448
+/line30 {2 dict begin
+  /e exch def
+  /g exch def
+  g setgray
+  e 26.448 lt
+  {
+    newpath
+    400 100 moveto
+    400
+    8 3 div e mul cos 300 mul neg 400 add lineto
+    stroke
+  }{
+    newpath
+    400 100 moveto
+    400 300 lineto
+    stroke
+  } ifelse
+end } def
+
+%  Draw line 31 from (600,900) to (600+800((1-cos(e))/sin(e)),900) if e>0
+/line31 {2 dict begin
+  /e exch def
+  /g exch def
+  g setgray
+  e 0 gt
+  {
+    newpath
+    600 900 moveto 
+    e cos neg 1 add e sin div 800 mul 600 add 
+    900 lineto
+    stroke
+  } if
+end } def
+
+%  Draw line 32 from (600,900) to (1400,900)
+/line32 {1 dict begin
+  /g exch def
+  g setgray
+  newpath
+  600 900 moveto
+  1400 900 lineto
+  stroke
+end } def
+
+%  Draw line 33 from (600,100) to (1400,100)
+/line33 {1 dict begin
+  /g exch def
+  g setgray
+  newpath
+  600 100 moveto
+  1400 100 lineto
+  stroke
+end } def
+
+%  Draw line 34 from (1400,900) to (1400,100)
+/line34 {1 dict begin
+  /g exch def
+  g setgray
+  newpath
+  1400 900 moveto
+  1400 100 lineto
+  stroke
+end } def
+
+% Draw line 35 from (400,400) to (400,300+(10/9)t)
+/line35 {2 dict begin
+    /t exch def
+    /g exch def
+    g setgray
+    t 90 lt {
+        newpath
+        400 400 moveto
+        400
+        10 9 div t mul 300 add lineto
+        stroke
+    } if
+end } def
+
+% Draw line 36 from (500,400) to (500,300+(10/9)t)
+/line36 {2 dict begin
+    /t exch def
+    /g exch def
+    g setgray
+    t 90 lt {
+        newpath
+        500 400 moveto
+        500
+        10 9 div t mul 300 add lineto
+        stroke
+    } if
+end } def
+
+% [1] Draw line 37 from (400,300) to (400+(20/9)t,300)
+% [2] Draw line 37 from (600,300) to (400+(20/9)t,300)
+/line37 {3 dict begin
+    /t exch def
+    /g exch def
+    /v exch def
+    g setgray
+    v 1 eq {
+        /X 400 def
+    }{
+        /X 600 def
+    } ifelse
+    newpath
+    X 300 moveto
+    20 9 div t mul 400 add
+    300 lineto
+    stroke
+end } def
+
+% [1] Draw line 38 from (400,400) to (400,400-(30/9)t)
+% [2] Draw line 38 from (400,100) to (400,400-(30/9)t)
+/line38 {3 dict begin
+    /t exch def
+    /g exch def
+    /v exch def
+    g setgray
+    v 1 eq {
+        /Y 400 def
+    }{
+        /Y 100 def
+    } ifelse
+    newpath
+    400 Y moveto
+    400
+    30 9 div t mul neg 400 add lineto
+    stroke
+end } def
+
+% Draw line 39 from (600,400) to (600-(50/9)t,400)
+/line39 {2 dict begin
+    /t exch def
+    /g exch def
+    g setgray
+    newpath
+    600 400 moveto
+    50 9 div t mul neg 600 add
+    400 lineto
+    stroke
+end } def
+
+% Draw line 40 from (400,300) to (400,300+u)
+/line40 {2 dict begin
+    /u exch def
+    /g exch def
+    g setgray
+    newpath
+    400 300 moveto
+    400
+    300 u add lineto
+    stroke
+end } def
+
+% Draw line 41 from (500,300) to (500,300+u)
+/line41 {2 dict begin
+    /u exch def
+    /g exch def
+    g setgray
+    newpath
+    500 300 moveto
+    500
+    300 u add lineto
+    stroke
+end } def
+
+% [1] Draw line 42 from (400,100+u) to (400,300) to (400+u,300)
+% [2] Draw line 42 from (400,300) to (400+u,300)
+/line42 {3 dict begin
+    /u exch def
+    /g exch def
+    /v exch def
+    g setgray
+    v 1 eq {
+        newpath
+        400 100 u add moveto
+        400 300 lineto
+        400 u add 300 lineto
+        stroke
+    }{
+        newpath
+        400 300 moveto
+        400 u add 300 lineto
+        stroke
+    } ifelse
+end } def
+
+% Draw line 43 from (100+u,400) to (400,400) to (400,400-u)
+/line43 {2 dict begin
+    /u exch def
+    /g exch def
+    g setgray
+    newpath
+    100 u add 400 moveto
+    400 400 lineto
+    400 400 u sub lineto
+    stroke
+end } def
+
+% [1] Series of lines for end of flashback
+/line44 {1 dict begin
+    /gD exch def
+    gD setgray
+    newpath
+    575 400 moveto
+    600 400 lineto
+    600 375 lineto
+    stroke
+end } def
+
+% [2] Series of lines for end of flashback
+/line45 {1 dict begin
+    /gD exch def
+    gD setgray
+    newpath
+    450 400 moveto
+    500 400 lineto
+    500 350 lineto
+    stroke
+    newpath
+    550 300 moveto
+    600 300 lineto
+    600 250 lineto
+    stroke
+end } def
+
+% [3] Series of lines for end of flashback
+/line46 {4 dict begin
+    /w1 exch def
+    /w2 exch def
+    /gD exch def
+    /gL exch def
+    gL setgray
+    w1 setlinewidth
+    newpath
+    225 400 moveto
+    400 400 lineto
+    400 250 lineto
+    stroke
+    gD setgray
+    w2 setlinewidth
+    newpath
+    400 400 moveto
+    400 375 lineto
+    stroke
+    newpath
+    425 300 moveto
+    600 300 lineto
+    600 100 lineto
+    550 100 lineto
+    stroke
+end } def
+
+% [4] Series of lines for end of flashback
+/line47 {4 dict begin
+    /w1 exch def
+    /w2 exch def
+    /gD exch def
+    /gL exch def
+    gL setgray
+    w1 setlinewidth
+    newpath
+    100 400 moveto
+    400 400 lineto
+    400 150 lineto
+    stroke
+    gD setgray
+    w2 setlinewidth
+    newpath
+    100 575 moveto
+    100 250 lineto
+    stroke
+    newpath
+    600 100 moveto
+    300 100 lineto
+    stroke
+end } def
+
+% [5] Series of lines for end of flashback
+/line48 {1 dict begin
+    /gD exch def
+    gD setgray
+    newpath
+    100 800 moveto
+    100 125 lineto
+    stroke
+    newpath
+    400 100 moveto
+    225 100 lineto
+    stroke
+end } def
+
+% [1] Draw arc 1 from (90-x)¡ to 90¡
+% [2] Draw arc 1 from 0¡ to (90-2x)¡
+/arc1 {4 dict begin
+    /x exch def
+    /g exch def
+    /w exch def
+    /v exch def
+    g setgray
+    w setlinewidth
+    v 1 eq {
+        /P x sin 100 mul 400 add def
+        /Q x cos 100 mul 300 add def
+        /a 90 x sub def
+        /b 90 def
+    }{
+        /P 500 def
+        /Q 300 def
+        /a 0 def
+        /b x 2 mul neg 90 add def
+    } ifelse
+    newpath
+    P Q moveto
+    400 300 100 a b arc
+    stroke
+end } def  
+
+% [1] Draw arc 2 from (90-x)¡ to 90¡
+% [2] Draw arc 2 from 0¡ to (180-2x)¡
+% [3] Draw arc 2 from 0¡ to (90-3x)¡
+/arc2 {4 dict begin
+    /x exch def
+    /g exch def
+    /w exch def
+    /v exch def
+    g setgray
+    w setlinewidth
+    v 1 eq {
+        /P x sin 100 mul 500 add def
+        /Q x cos 100 mul 300 add def
+        /a 90 x sub def
+        /b 90 def
+    } if
+    v 2 eq {
+        /P 600 def
+        /Q 300 def
+        /a 0 def
+        /b x 2 mul neg 180 add def
+    } if
+    v 3 eq {
+        /P 600 def
+        /Q 300 def
+        /a 0 def
+        /b x 3 mul neg 90 add def
+    } if
+    newpath
+    P Q moveto
+    500 300 100 a b arc
+    stroke
+end } def
+
+% [1] Draw arc 3 from (360-x)¡ to 360¡
+% [2] Draw arc 3 from 270¡ to (405-(3/2)x)¡
+% [3] Draw arc 3 from 270¡ to (360-(5/2)x)¡
+/arc3 {4 dict begin
+    /x exch def
+    /g exch def
+    /w exch def
+    /v exch def
+    g setgray
+    w setlinewidth
+    v 1 eq {
+        /P x cos 200 mul 400 add def
+        /Q x sin 200 mul neg 300 add def
+        /a 360 x sub def
+        /b 360 def
+    } if
+    v 2 eq {
+        /P 400 def
+        /Q 100 def
+        /a 270 def
+        /b 3 2 div x mul neg 405 add def
+    } if
+    v 3 eq {
+        /P 400 def
+        /Q 100 def
+        /a 270 def
+        /b 5 2 div x mul neg 360 add def
+    } if
+    newpath
+    P Q moveto
+    400 300 200 a b arc
+    stroke
+end } def
+
+% [1] Draw arc 4 from (270-x)¡ to 270¡
+% [2] Draw arc 4 from 180¡ to (330-(5/3)x)¡
+/arc4 {4 dict begin
+    /x exch def
+    /g exch def
+    /w exch def
+    /v exch def
+    g setgray
+    w setlinewidth
+    v 1 eq {
+        /P x sin 300 mul neg 400 add def
+        /Q x cos 300 mul neg 400 add def
+        /a 270 x sub def
+        /b 270 def
+    }{
+        /P 100 def
+        /Q 400 def
+        /a 180 def
+        /b 5 3 div x mul neg 330 add def
+    } ifelse
+    newpath
+    P Q moveto
+    400 400 300 a b arc
+    stroke
+end } def
+
+% Draw arc 5 from (180-x)¡ to 180¡
+/arc5 {3 dict begin
+    /x exch def
+    /g exch def
+    /w exch def
+    g setgray
+    w setlinewidth
+    /P x cos 500 mul neg 600 add def
+    /Q x sin 500 mul 400 add def
+    /a 180 x sub def
+    /b 180 def
+    newpath
+    P Q moveto
+    600 400 500 a b arc
+    stroke
+end } def
+
+% Sets line qualities for environments 1, 2, 3, 4, and 5
+/linesetE1 {
+    /gL 0.85 def
+    /gD 0.6 def
+    /gG 0.85 def
+    /gS 0.95 def
+    /w1 1.5 def
+    /w2 3.25 def
+    1 setlinejoin
+    1 setlinecap
+} def
+
+% Sets line qualities for environments 5, 6, and 7
+/linesetE2 {
+    /gL 0.725 def
+    /gD 0.475 def
+    /gG 0.8 def
+    /w1 1.5 def
+    /w2 3.25 def
+    1 setlinejoin
+    1 setlinecap
+} def
+
+% Sets line qualities for gradients
+/linesetG {
+    3 setlinewidth
+    1 setlinejoin
+    1 setlinecap
+} def
+
+% Sets line qualities for flashbacks 1A-C, 2A-C, and 3A-C
+/linesetF {
+    1 setlinejoin
+    1 setlinecap
+    3.25 setlinewidth
+} def
+
+/circle {7 dict begin
+    /A exch def
+    /g exch def
+    /yA exch def
+    /xA exch def
+    /yT exch def
+    /xT exch def
+    /v exch def
+    /t xA xT yA yT distance def
+    /mX xA xT add 2 div def
+    /mY yA yT add 2 div def
+    /q t 2 div dup mul neg t dup mul add sqrt def
+    /Cx yT yA sub t div q mul neg mX add def
+    /Cy xA xT sub t div q mul neg mY add def
+    v 0 eq {
+        /a1 300 Cy sub 500 Cx sub atan def
+        /a2 400 Cy sub 400 Cx sub atan def
+        /m xA xT sub yA yT sub div neg def
+        mX 45 sin 100 mul 400 add lt {
+            /sX 400 mY sub m div mX add def
+            /sY 400 def } if
+        mX 45 sin 100 mul 400 add eq {
+            /sX 500 def
+            /sY 400 def } if
+        mX 45 sin 100 mul 400 add gt {
+            /sX 500 def
+            /sY 500 mX sub m mul mY add def
+            } if
+        A 45 le { /n sX mX sY mY distance 2 div def
+        }{ /n 10 def } ifelse
+        /cover {
+            300 401 1 205 square
+            498 250 1 200 square
+            300 96 1 205 square
+        } def
+    } if
+    v 1 eq {
+        /a1 300 Cy sub 600 Cx sub atan def
+        /a2 400 Cy sub 500 Cx sub atan def
+        /m xA xT sub yA yT sub div neg def
+        mX 45 sin 100 mul 500 add lt {
+            /sX 400 mY sub m div mX add def
+            /sY 400 def } if
+        mX 45 sin 100 mul 500 add eq {
+            /sX 600 def
+            /sY 400 def } if
+        mX 45 sin 100 mul 500 add gt {
+            /sX 600 def
+            /sY 600 mX sub m mul mY add def
+            } if
+        A 45 le { /n sX mX sY mY distance 2 div def
+        }{ /n 10 def } ifelse
+        /cover {
+            400 401 1 205 square
+            598 250 1 200 square
+            400 96 1 205 square
+        } def
+    } if
+    v 2 eq {
+        /a1 100 Cy sub 400 Cx sub atan def
+        /a2 300 Cy sub 600 Cx sub atan def
+        /m xA xT sub yA yT sub div neg def
+        mX 45 cos 200 mul 400 add gt {
+            /sX 600 def
+            /sY 600 mX sub m mul mY add def } if
+        mX 45 cos 200 mul 400 add eq {
+            /sX 600 def
+            /sY 100 def } if
+        mX 45 cos 200 mul 400 add lt {
+            /sX 100 mY sub m div mX add def
+            /sY 100 def } if
+        A 45 le { /n sX mX sY mY distance 2 div def
+        }{ /n 15 def } ifelse
+        /cover {
+            601 100 1 305 square
+            100 100 1 300 square
+            398 0 1 306 100 rectangle
+        } def
+    } if
+    v 3 eq {
+        /a1 400 Cy sub 100 Cx sub atan def
+        /a2 100 Cy sub 400 Cx sub atan def
+        /m xA xT sub yA yT sub div neg def
+        mX 45 sin 300 mul neg 400 add gt {
+            /sX 100 mY sub m div mX add def
+            /sY 100 def } if
+        mX 45 sin 300 mul neg 400 add eq {
+            /sX 100 def
+            /sY 100 def } if
+        mX 45 sin 300 mul neg 400 add lt {
+            /sX 100 def
+            /sY 100 mX sub m mul mY add def
+            } if
+        A 45 le { /n sX mX sY mY distance 3.5 div def
+        }{ /n 15 def } ifelse
+        /cover {
+            0 0 1 100 405 rectangle
+            0 0 1 500 99 rectangle
+        } def
+    } if
+    v 4 eq {
+        /a1 900 Cy sub 600 Cx sub atan def
+        /a2 400 Cy sub 100 Cx sub atan def
+        /m xA xT sub yA yT sub div neg def
+        mX 45 cos 500 mul neg 600 add lt {
+            /sX 100 def
+            /sY 100 mX sub m mul mY add def } if
+        mX 45 cos 500 mul neg 600 add eq {
+            /sX 100 def
+            /sY 900 def } if
+        mX 45 cos 500 mul neg 600 add gt {
+            /sX 900 mY sub m div mX add def
+            /sY 900 def } if
+        A 45 le { /n sX mX sY mY distance 3.5 div def
+        }{ /n 25 def } ifelse
+        /cover {
+            400 neg 100 1 499 850 rectangle
+            0 900 1 700 100 rectangle
+        } def
+    } if
+    v 5 eq {
+        /a1 100 Cy sub 1400 Cx sub atan def
+        /a2 900 Cy sub 600 Cx sub atan def
+        /m xA xT sub yA yT sub div neg def
+        mX 45 sin 800 mul 600 add lt {
+            /sX 900 mY sub m div mX add def
+            /sY 900 def } if
+        mX 45 sin 800 mul 600 add eq {
+            /sX 1400 def
+            /sY 900 def } if
+        mX 45 sin 800 mul 600 add gt {
+            /sX 1400 def
+            /sY 1400 mX sub m mul mY add def
+            } if
+        A 45 le { /n sX mX sY mY distance 3.5 div def
+        }{ /n 40 def } ifelse
+        /cover {
+            1400 100 1 850 square
+            500 901 1 1000 200 rectangle
+        } def
+    } if
+    /dg 1 g sub n div def
+    0 1 n {
+        /i exch def
+        /G i dg mul neg 1 add def
+        /r t n add i sub def
+        G setgray
+        Cx Cy moveto
+        Cx Cy r a1 a2 arc
+        closepath
+        fill
+    } for
+    /l mX Cx mY Cy distance neg t add 3 sub def
+    1 setgray
+    Cx Cy moveto
+    Cx Cy l a1 1 sub a2 1 add arc
+    closepath
+    fill
+    cover
+end } def
+
+/circleF {7 dict begin
+    /A exch def
+    /g exch def
+    /g2 exch def
+    /yA exch def
+    /xA exch def
+    /yT exch def
+    /xT exch def
+    /v exch def
+    /t xA xT yA yT distance def
+    /mX xA xT add 2 div def
+    /mY yA yT add 2 div def
+    /q t 2 div dup mul neg t dup mul add sqrt def
+    /Cx yT yA sub t div q mul neg mX add def
+    /Cy xA xT sub t div q mul neg mY add def
+    v 3 eq {
+        /a1 400 Cy sub 100 Cx sub atan def
+        /a2 100 Cy sub 400 Cx sub atan def
+        /m xA xT sub yA yT sub div neg def
+        mX 45 sin 300 mul neg 400 add gt {
+            /sX 100 mY sub m div mX add def
+            /sY 100 def } if
+        mX 45 sin 300 mul neg 400 add eq {
+            /sX 100 def
+            /sY 100 def } if
+        mX 45 sin 300 mul neg 400 add lt {
+            /sX 100 def
+            /sY 100 mX sub m mul mY add def
+            } if
+        A 45 le { /n sX mX sY mY distance 3.5 div def
+        }{ /n 15 def } ifelse
+        /cover {
+            0 0 1 100 405 rectangle
+            0 0 1 500 99 rectangle
+        } def
+        g2 1 ne { /g2 g2 0.04 add def } if
+    } if
+    v 4 eq {
+        /a1 900 Cy sub 600 Cx sub atan def
+        /a2 400 Cy sub 100 Cx sub atan def
+        /m xA xT sub yA yT sub div neg def
+        mX 45 cos 500 mul neg 600 add lt {
+            /sX 100 def
+            /sY 100 mX sub m mul mY add def } if
+        mX 45 cos 500 mul neg 600 add eq {
+            /sX 100 def
+            /sY 900 def } if
+        mX 45 cos 500 mul neg 600 add gt {
+            /sX 900 mY sub m div mX add def
+            /sY 900 def } if
+        A 45 le { /n sX mX sY mY distance 3.5 div def
+        }{ /n 25 def } ifelse
+        /cover {
+            400 neg 100 1 499 850 rectangle
+            0 900 1 700 100 rectangle
+        } def
+    } if
+    g2 1 eq { /dg 1 g sub n div def }
+    { /dg g g2 sub n div def } ifelse
+    0 1 n {
+        /i exch def
+        g2 1 eq { /G i dg mul neg 1 add def }
+        { /G i dg mul g2 add def } ifelse
+        /r t n add i sub def
+        G setgray
+        Cx Cy moveto
+        Cx Cy r a1 a2 arc
+        closepath
+        fill
+    } for
+    /l mX Cx mY Cy distance neg t add 3 sub def
+    1 setgray
+    Cx Cy moveto
+    Cx Cy l a1 1 sub a2 1 add arc
+    closepath
+    fill
+    cover
+end } def
+
+% Gradient arc for formation of box 1
+/gradient0 {3 dict begin
+    /a exch def
+    /G1 exch def
+    /G2 exch def
+    /j 1 G1 sub def
+    /k 60 sin j mul neg 1 add j 60 div sub def
+    /l G1 G2 sub def
+    /m 60 sin j mul neg 1 add def
+    a 0 gt {
+        /xT a cos neg 1 add a sin div 100 mul 400 add def
+        /yT 400 def
+        /xA a sin 100 mul 400 add def
+        /yA a cos 100 mul 300 add def
+        /n xA 400 sub def
+        /g n 100 div j mul neg 1 add def
+        /dg 1 g sub n div def
+        a 60 lt { /g1 g def
+        }{ /g1 a 60 sub j mul 30 div k add def } ifelse
+        a 90 lt { 0 xT yT xA yA g1 a circle } if
+        0 1 n {
+            /i exch def
+            /G dg i mul g add def
+            /x1 xT i sub def
+            x1 400 lt { /x1 400 def } if
+            /x2 xA i sub def
+            x2 400 lt { /x2 400 def } if
+            G setgray
+            linesetG
+            newpath
+            400 400 moveto
+            x1 yT lineto
+            x2 yA lineto
+            closepath
+            fill
+        } for
+        linesetG
+        1 setgray
+        399 299.5 moveto
+        399 299.5 100.25 0 90 arc
+        closepath
+        fill
+        xA 42 sub yA 42 sub 1 40 square
+        a 60 gt {
+            /h a 60 sub l mul 30 div neg m add def
+            /w a 60 sub 1.5 mul 30 div def
+            h setgray
+            w setlinewidth
+            newpath
+            xT yT moveto
+            xA yA lineto
+            stroke
+        } if
+    } if
+end } def
+
+/gradient0b {3 dict begin
+    /q exch def
+    /G1 exch def
+    /v exch def
+    /j 1 G1 sub def
+    q 3 le { 
+        /g G1 def
+        /dg j 100 div def
+        0 1 100 {
+            /i exch def
+            /G i dg mul g add def
+            /x 500 i sub def
+            x 400 lt { /x 400 def } if
+            linesetG
+            G setgray
+            newpath
+            400 400 moveto
+            x 400 lineto
+            x 300 lineto
+            closepath
+            fill
+        } for
+    }{
+        /A q 3 sub 7.5 mul def
+        v 2 eq { /A q 3 sub def } if
+        A 90 lt {
+            /n 90 A sub def
+            /g G1 def
+            /dg j n div def
+            A 0 gt {
+                /xT A cos neg 1 add A sin div 100 mul 400 add def
+                /yT 400 def
+                /xA A sin 100 mul 400 add def
+                /yA A cos 100 mul 300 add def
+                1 1 n {
+                    /i exch def
+                    /G i dg mul g add def
+                    /a 90 i sub def
+                    /x1 a cos neg 1 add a sin div 100 mul 400 add def
+                    /y1 400 def
+                    /x2 a sin 100 mul 400 add def
+                    /y2 a cos 100 mul 300 add def
+                    G setgray
+                    linesetG
+                    newpath
+                    xT yT moveto
+                    x1 y1 lineto
+                    x2 y2 lineto
+                    closepath
+                    fill
+                } for
+                linesetG
+                1 setgray
+                400 400 moveto
+                xT yT lineto
+                xA yA lineto
+                500 300 lineto
+                closepath
+                fill
+            } if
+        } if
+    } ifelse
+    linesetG
+    1 setgray
+    399 299.5 moveto
+    399 299.5 100.25 0 90 arc
+    closepath
+    fill
+    300 300 1 100.5 square
+end } def
+
+% Gradient arc for formation of box 2
+/gradient1 {3 dict begin
+    /a exch def
+    /G1 exch def
+    /G2 exch def
+    /j 1 G1 sub def
+    /k 60 sin j mul neg 1 add j 60 div sub def
+    /l G1 G2 sub def
+    /m 60 sin j mul neg 1 add def
+    a 0 gt {
+        /xT a cos neg 1 add a sin div 100 mul 500 add def
+        /yT 400 def
+        /xA a sin 100 mul 500 add def
+        /yA a cos 100 mul 300 add def
+        /n xA 500 sub def
+        /g n 100 div j mul neg 1 add def
+        /dg 1 g sub n div def
+        a 60 lt { /g1 g def
+        }{ /g1 a 60 sub j mul 30 div k add def } ifelse
+        a 90 lt { 1 xT yT xA yA g1 a circle } if
+        0 1 n {
+            /i exch def
+            /G dg i mul g add def
+            /x1 xT i sub def
+            x1 500 lt { /x1 500 def } if
+            /x2 xA i sub def
+            x2 500 lt { /x2 500 def } if
+            G setgray
+            linesetG
+            newpath
+            500 400 moveto
+            x1 yT lineto
+            x2 yA lineto
+            closepath
+            fill
+        } for
+        linesetG
+        1 setgray
+        499 299.5 moveto
+        499 299.5 100.25 0 90 arc
+        closepath
+        fill
+        xA 42 sub yA 42 sub 1 40 square
+        a 60 gt {
+            /h a 60 sub l mul 30 div neg m add def
+            /w a 60 sub 3.25 mul 30 div def
+            h setgray
+            w setlinewidth
+            newpath
+            xT yT moveto
+            xA yA lineto
+            stroke
+        } if
+    } if
+end } def
+
+/gradient1b {3 dict begin
+    /q exch def
+    /G1 exch def
+    /v exch def
+    /j 1 G1 sub def
+    q 3 le { 
+        /g G1 def
+        /dg j 100 div def
+        0 1 100 {
+            /i exch def
+            /G i dg mul g add def
+            /x 600 i sub def
+            x 500 lt { /x 500 def } if
+            linesetG
+            G setgray
+            newpath
+            500 400 moveto
+            x 400 lineto
+            x 300 lineto
+            closepath
+            fill
+        } for
+    }{
+        /A q 3 sub 7.5 mul def
+        v 2 eq { /A q 3 sub def } if
+        A 90 lt {
+            /n 90 A sub def
+            /g G1 def
+            /dg j n div def
+            A 0 gt {
+                /xT A cos neg 1 add A sin div 100 mul 500 add def
+                /yT 400 def
+                /xA A sin 100 mul 500 add def
+                /yA A cos 100 mul 300 add def
+                1 1 n {
+                    /i exch def
+                    /G i dg mul g add def
+                    /a 90 i sub def
+                    /x1 a cos neg 1 add a sin div 100 mul 500 add def
+                    /y1 400 def
+                    /x2 a sin 100 mul 500 add def
+                    /y2 a cos 100 mul 300 add def
+                    G setgray
+                    linesetG
+                    newpath
+                    xT yT moveto
+                    x1 y1 lineto
+                    x2 y2 lineto
+                    closepath
+                    fill
+                } for
+                linesetG
+                1 setgray
+                500 400 moveto
+                xT yT lineto
+                xA yA lineto
+                600 300 lineto
+                closepath
+                fill
+            } if
+        } if
+    } ifelse
+    linesetG
+    1 setgray
+    499 299.5 moveto
+    499 299.5 100.25 0 90 arc
+    closepath
+    fill
+    400 300 1 100.5 square
+end } def
+
+% Gradient arc for formation of box 3
+/gradient2 {3 dict begin
+    /b exch def
+    /G1 exch def
+    /G2 exch def
+    /j 1 G1 sub def
+    /k 60 sin j mul neg 1 add j 60 div sub def
+    /l G1 G2 sub def
+    /m 60 sin j mul neg 1 add def
+    b 0 gt {
+        /xT 600 def
+        /yT b cos neg 1 add b sin div 200 mul neg 300 add def
+        /xA b cos 200 mul 400 add def
+        /yA b sin 200 mul neg 300 add def
+        /n 300 yA sub def
+        /g n 200 div j mul neg 1 add def
+        /dg 1 g sub n div def
+        b 60 lt { /g1 g def
+        }{ /g1 b 60 sub j mul 30 div k add def } ifelse
+        b 90 lt { 2 xT yT xA yA g1 b circle } if
+        0 1 n {
+            /i exch def
+            /G dg i mul g add def
+            /y1 yT i add def
+            y1 300 gt { /y1 300 def } if
+            /y2 yA i add def
+            y2 300 gt { /y2 300 def } if
+            G setgray
+            linesetG
+            newpath
+            600 300 moveto
+            xT y1 lineto
+            xA y2 lineto
+            closepath
+            fill
+        } for
+        linesetG
+        1 setgray
+        400 301 moveto
+        400 301 200.25 270 360 arc
+        closepath
+        fill
+        b 60 gt {
+            /h b 60 sub l mul 30 div neg m add def
+            /w b 60 sub 3.25 mul 30 div def
+            h setgray
+            w setlinewidth
+            newpath
+            xT yT moveto
+            xA yA lineto
+            stroke
+        } if
+    } if
+end } def
+
+/gradient2b {3 dict begin
+    /q exch def
+    /G1 exch def
+    /v exch def
+    /j 1 G1 sub def
+    q 3 le { 
+        /g G1 def
+        /dg j 200 div def
+        0 1 200 {
+            /i exch def
+            /G i dg mul g add def
+            /y 100 i add def
+            y 300 gt { /y 300 def } if
+            linesetG
+            G setgray
+            newpath
+            600 300 moveto
+            600 y lineto
+            400 y lineto
+            closepath
+            fill
+        } for
+    }{
+        /A q 3 sub 7.5 mul def
+        v 2 eq { /A q 3 sub def } if
+        A 90 lt {
+            /n 90 A sub def
+            /g G1 def
+            /dg j n div def
+            A 0 gt {
+                /xT 600 def
+                /yT A cos neg 1 add A sin div 200 mul neg 300 add def
+                /xA A cos 200 mul 400 add def
+                /yA A sin 200 mul neg 300 add def
+                405 100 G1 195 5 rectangle
+                1 1 n {
+                    /i exch def
+                    /G i dg mul g add def
+                    /b 90 i sub def
+                    /x1 600 def
+                    /y1 b cos neg 1 add b sin div 200 mul neg 300 add def
+                    /x2 b cos 200 mul 400 add def
+                    /y2 b sin 200 mul neg 300 add def
+                    linesetG
+                    G setgray
+                    newpath
+                    xT yT moveto
+                    x1 y1 lineto
+                    x2 y2 lineto
+                    closepath
+                    fill
+                } for
+                linesetG
+                1 setgray
+                600 300 moveto
+                xT yT lineto
+                xA yA lineto
+                400 100 lineto
+                closepath
+                fill
+            } if
+        } if
+    } ifelse
+    linesetG
+    1 setgray
+    400 301 moveto
+    400 301 200.25 270 360 arc
+    closepath
+    fill
+end } def
+
+% Gradient arc for formation of box 4
+/gradient3 {3 dict begin
+    /c exch def
+    /G1 exch def
+    /G2 exch def
+    /j 1 G1 sub def
+    /k 60 sin j mul neg 1 add j 60 div sub def
+    /l G1 G2 sub def
+    /m 60 sin j mul neg 1 add def
+    c 0 gt {
+        /xT c cos neg 1 add c sin div 300 mul neg 400 add def
+        /yT 100 def
+        /xA c sin 300 mul neg 400 add def
+        /yA c cos 300 mul neg 400 add def
+        /n 400 xA sub def
+        /g n 300 div j mul neg 1 add def
+        /dg 1 g sub n div def
+        c 60 le { /g1 g def
+        }{ /g1 c 60 sub j mul 30 div k add def } ifelse
+        c 90 lt { 3 xT yT xA yA g1 c circle } if
+        0 1 n {
+            /i exch def
+            /G dg i mul g add def
+            /x1 xT i add def
+            x1 400 gt { /x1 400 def } if
+            /x2 xA i add def
+            x2 400 gt { /x2 400 def } if
+            G setgray
+            linesetG
+            newpath
+            400 100 moveto
+            x1 yT lineto
+            x2 yA lineto
+            closepath
+            fill
+        } for
+        1 setlinejoin
+        1 setlinecap
+        1 setgray
+        399 399 moveto
+        399 399 298.5 180 270 arc
+        closepath
+        fill
+        c 60 gt {
+            /h c 60 sub l mul 30 div neg m add def
+            /w c 60 sub 3.25 mul 30 div def
+            h setgray
+            w setlinewidth
+            newpath
+            xT yT moveto
+            xA yA lineto
+            stroke
+        } if
+    } if
+end } def
+
+/gradient3b {3 dict begin
+    /q exch def
+    /G1 exch def
+    /v exch def
+    /j 1 G1 sub def
+    q 3 le { 
+        /g G1 def
+        /dg j 300 div def
+        0 1 300 {
+            /i exch def
+            /G i dg mul g add def
+            /x 100 i add def
+            x 400 gt { /x 400 def } if
+            linesetG
+            G setgray
+            newpath
+            400 100 moveto
+            x 100 lineto
+            x 400 lineto
+            closepath
+            fill
+        } for
+    }{
+        /A q 3 sub 7.5 mul def
+        v 2 eq { /A q 3 sub def } if
+        A 90 lt {
+            /n 90 A sub def
+            /g G1 def
+            /dg j n div def
+            A 0 gt {
+                /xT A cos neg 1 add A sin div 300 mul neg 400 add def
+                /yT 100 def
+                /xA A sin 300 mul neg 400 add def
+                /yA A cos 300 mul neg 400 add def
+                100 100 G1 10 250 rectangle
+                1 1 n {
+                    /i exch def
+                    /G i dg mul g add def
+                    /c 90 i sub def
+                    /x1 c cos neg 1 add c sin div 300 mul neg 400 add def
+                    /y1 100 def
+                    /x2 c sin 300 mul neg 400 add def
+                    /y2 c cos 300 mul neg 400 add def
+                    linesetG
+                    G setgray
+                    newpath
+                    xT yT moveto
+                    x1 y1 lineto
+                    x2 y2 lineto
+                    closepath
+                    fill
+                } for
+                linesetG
+                1 setgray
+                400 100 moveto
+                xT yT lineto
+                xA yA lineto
+                100 400 lineto
+                closepath
+                fill
+            } if
+        } if
+    } ifelse
+    linesetG
+    1 setgray
+    399 399 moveto
+    399 399 298.5 180 270 arc
+    closepath
+    fill
+end } def
+
+/gradient3F {4 dict begin
+    /c exch def
+    /G1 exch def
+    /G2 exch def
+    /g3 exch def
+    /j 1 G1 sub def
+    /k 60 sin j mul neg 1 add j 60 div sub def
+    /l G1 G2 sub def
+    /m 60 sin j mul neg 1 add def
+    c 0 gt {
+        /xT c cos neg 1 add c sin div 300 mul neg 400 add def
+        /yT 100 def
+        /xA c sin 300 mul neg 400 add def
+        /yA c cos 300 mul neg 400 add def
+        /n 400 xA sub def
+        /g n 300 div j mul neg 1 add def
+        /dg 1 g sub n div def
+        c 60 le { /g1 g def
+        }{ /g1 c 60 sub j mul 30 div k add def } ifelse
+        g3 1 ne { c 60 gt { /g1 g1 0.025 sub def } if } if
+        c 90 lt { 3 xT yT xA yA g3 g1 c circleF } if
+        0 1 n {
+            /i exch def
+            /G dg i mul g add def
+            /x1 xT i add def
+            x1 400 gt { /x1 400 def } if
+            /x2 xA i add def
+            x2 400 gt { /x2 400 def } if
+            G setgray
+            linesetG
+            newpath
+            400 100 moveto
+            x1 yT lineto
+            x2 yA lineto
+            closepath
+            fill
+        } for
+        1 setlinejoin
+        1 setlinecap
+        1 setgray
+        399 399 moveto
+        399 399 298.5 180 270 arc
+        closepath
+        fill
+        c 60 gt {
+            /h c 60 sub l mul 30 div neg m add def
+            /w c 60 sub 3.25 mul 30 div def
+            h setgray
+            w setlinewidth
+            newpath
+            xT yT moveto
+            xA yA lineto
+            stroke
+        } if
+    } if
+end } def
+
+% Gradient arc for formation of box 5
+/gradient4 {3 dict begin
+    /d exch def
+    /G1 exch def
+    /G2 exch def
+    /j 1 G1 sub def
+    /k 60 sin j mul neg 1 add j 60 div sub def
+    /l G1 G2 sub def
+    /m 60 sin j mul neg 1 add def
+    d 0 gt {
+        /xT 100 def
+        /yT d cos neg 1 add d sin div 500 mul 400 add def
+        /xA d cos 500 mul neg 600 add def
+        /yA d sin 500 mul 400 add def
+        /n yA 400 sub def
+        /g n 500 div j mul neg 1 add def
+        /dg 1 g sub n div def
+        d 60 le { /g1 g def
+        }{ /g1 d 60 sub j mul 30 div k add def } ifelse
+        d 90 lt { 4 xT yT xA yA g1 d circle } if
+        0 1 n {
+            /i exch def
+            /G dg i mul g add def
+            /y1 yT i sub def
+            y1 400 lt { /y1 400 def } if
+            /y2 yA i sub def
+            y2 400 lt { /y2 400 def } if
+            G setgray
+            linesetG
+            newpath
+            100 400 moveto
+            xT y1 lineto
+            xA y2 lineto
+            closepath
+            fill
+        } for
+        1 setlinejoin
+        1 setlinecap
+        1 setgray
+        599 401 moveto
+        599 401 498.5 90 180 arc
+        closepath
+        fill
+        d 60 gt {
+            /h d 60 sub l mul 30 div neg m add def
+            /w d 60 sub 3.25 mul 30 div def
+            h setgray
+            w setlinewidth
+            newpath
+            xT yT moveto
+            xA yA lineto
+            stroke
+        } if
+    } if
+end } def
+
+% Gradient arc for formation of box 2
+/gradient5 {3 dict begin
+    /e exch def
+    /G1 exch def
+    /G2 exch def
+    /j 1 G1 sub def
+    /k 60 sin j mul neg 1 add j 60 div sub def
+    /l G1 G2 sub def
+    /m 60 sin j mul neg 1 add def
+    e 0 gt {
+        /xT e cos neg 1 add e sin div 800 mul 600 add def
+        /yT 900 def
+        /xA e sin 800 mul 600 add def
+        /yA e cos 800 mul 100 add def
+        /n xA 600 sub def
+        /g n 800 div j mul neg 1 add def
+        /dg 1 g sub n div def
+        e 60 le { /g1 g def
+        }{ /g1 e 60 sub j mul 30 div k add def } ifelse
+        e 90 lt { 5 xT yT xA yA g1 e circle } if
+        0 1 n {
+            /i exch def
+            /G dg i mul g add def
+            /x1 xT i sub def
+            x1 600 lt { /x1 600 def } if
+            /x2 xA i sub def
+            x2 600 lt { /x2 600 def } if
+            G setgray
+            linesetG
+            newpath
+            600 900 moveto
+            x1 yT lineto
+            x2 yA lineto
+            closepath
+            fill
+        } for
+        1 setlinejoin
+        1 setlinecap
+        1 setgray
+        599 101 moveto
+        599 101 798.5 0 90 arc
+        closepath
+        fill
+        e 60 gt {
+            /h e 60 sub l mul 30 div neg m add def
+            /w e 60 sub 3.25 mul 30 div def
+            h setgray
+            w setlinewidth
+            newpath
+            xT yT moveto
+            xA yA lineto
+            stroke
+        } if
+    } if
+end } def
+
+/swirl1 { 1 dict begin
+    /r exch def
+    /G1 0.021429 r mul neg 0.85 add def                  % [14] 0.85 to 0.55
+    /G2 0.021429 r mul 3 div 2 mul neg 0.85 add def
+    r 3 le { /x1 r 13.75 mul neg 55 add def
+        /x2 r 30 mul neg 90 add def
+        G2 G2 x1 gradient4
+        2 G1 x2 gradient3b } if
+    r 7 le { /x3 r 3 sub 22.5 mul neg 90 add def
+        /x4 r 4 sub 30 mul neg 90 add def
+        r 4 sub 0 gt { 2 G1 x4 gradient2b } if
+        r 3 sub 0 gt { G2 G2 x3 gradient3 } if } if
+    r 11 le { /x5 r 7 sub 22.5 mul neg 90 add def
+        /x6 r 7 sub 45 mul neg 90 add def
+        /x7 r 9 sub 45 mul neg 90 add def
+        r 7 sub 0 gt { G2 G2 x5 gradient2
+        2 G1 x6 gradient1b } if
+        r 9 sub 0 gt { 1 G1 1 gradient1b
+        2 G1 x7 gradient0b } if } if
+    r 14 le { /x8 r 11 sub 30 mul neg 90 add def
+        r 11 sub 0 gt { G1 G1 x8 gradient0 } if
+        r 11 sub 0 gt { G1 G1 x8 gradient1 } if } if
+end } def
+
+/swirl2 { 3 dict begin
+    /r exch def
+    /g3 exch def
+    /g2 exch def
+    r 41 le { /g2 1 def } if
+    /q r 32 sub def
+    /G1 0.007143 q mul neg 0.9 add def                     % [14] 0.9 to 0.8
+    q 0 gt { /x1 q 30 mul def
+        r 35 le { G1 G1 x1 gradient0
+        G1 G1 x1 gradient1 } if } if
+    q 3 gt { /x2 q 3 sub 22.5 mul def
+        /x3 q 3 sub 45 mul def
+        /x4 q 5 sub 45 mul def
+        r 40 lt { G1 G1 x2 gradient2
+        2 G1 x4 gradient1b } if
+        r 38 lt { 1 G1 1 gradient1b
+        2 G1 x3 gradient0b } if } if
+    q 7 gt { /x5 q 7 sub 30 mul def
+        /x6 q 7 sub 22.5 mul def
+        r 43 lt { 2 G1 x5 gradient2b } if
+        r 44 lt { g2 G1 G1 x6 gradient3F } if } if
+    q 11 gt { /x7 q 11 sub 30 mul def
+        /x8 q 11 sub 14 mul def
+        r 47 le { 2 G1 x7 gradient3b } if
+        r 49 le { G1 G1 x8 gradient4 } if } if
+end } def
+
+% Draw box 1
+/environment1 {1 dict begin
+    /a exch def
+    linesetE1
+    w1 setlinewidth
+    gL line1
+    w2 setlinewidth
+    gD line2
+    gD line3
+    gD line4
+    gD a line7
+end } def
+
+% Draw box 1; make box 2
+/environment2 {1 dict begin
+    /a exch def
+    linesetE1
+    gD gL a gradient1
+    w1 setlinewidth
+    gL line1
+    gL line2
+    w2 setlinewidth
+    gD line3
+    gD line4
+    gD a line5
+    gD a line6
+    gD a line7
+    gD a line8
+end } def
+
+% Draw boxes 1 and 2; make box 3
+/environment3 {2 dict begin
+    /b exch def
+    /i exch def
+    linesetE1
+    i 0 gt { 1 gG i gradient1b } if
+    gD gG b gradient2
+    w1 setlinewidth
+    gL line2
+    gL line9
+    w2 setlinewidth
+    gD line1
+    gD line3
+    gD line4
+    gD line10
+    gD line11
+    gD b line12
+    gD b line13
+end } def
+
+% Draw boxes 1, 2, and 3; make box 4
+/environment4 {2 dict begin
+    /c exch def
+    /i exch def
+    linesetE1
+    i 0 gt { 1 gG i gradient2b } if
+    gD gG c gradient3
+    w1 setlinewidth
+    gL line2
+    gL line9
+    gL line15
+    w2 setlinewidth
+    gD line1
+    gD line3
+    gD line4
+    gD line10
+    gD line11
+    gD line14
+    gD line16
+    gD c line17
+    gD c line18
+    gD c line19
+end } def
+
+% Draw boxes 1, 2, 3, and 4; make box 5
+/environment5 {3 dict begin
+    /d exch def
+    /i exch def
+    /v exch def
+    v 1 eq { linesetE1 }
+    { linesetE2 } ifelse
+    i 0 gt { 1 gG i gradient3b } if
+    gD gG d gradient4
+    w1 setlinewidth
+    gL line9
+    gL line15
+    gL line21
+    w2 setlinewidth
+    gD line1
+    gD line2
+    gD line3
+    gD line4
+    gD line10
+    gD line11
+    gD line14
+    gD line16
+    gD line20
+    gD line22
+    gD d line23
+    gD d line24
+    gD d line25
+end } def
+
+% Draw boxes 1, 2, 3, 4, and 5; make box 6
+/environment6 {1 dict begin
+    /e exch def
+    linesetE2
+    gD gG e gradient5
+    w1 setlinewidth
+    gL line15
+    gL line21
+    gL line27
+    w2 setlinewidth
+    gD line1
+    gD line2
+    gD line3
+    gD line4
+    gD line9
+    gD line10
+    gD line11
+    gD line14
+    gD line16
+    gD line20
+    gD line22
+    gD line26
+    gD line28
+    gD e line29
+    gD e line30
+    gD e line31
+end } def
+
+% Draw boxes 1, 2, 3, 4, 5, and 6
+/environment7 {1 dict begin
+    /i exch def
+    linesetE2
+    w1 setlinewidth
+    gL line21
+    gL line27
+    w2 setlinewidth
+    gD line1
+    gD line2
+    gD line3
+    gD line4
+    gD line9
+    gD line10
+    gD line11
+    gD line14
+    gD line15
+    gD line16
+    gD line20
+    gD line22
+    gD line26
+    gD line28
+    gD line32
+    gD line33
+    gD line34
+end } def
+
+% Background environment for flashback
+/environmentF {2 dict begin
+    /d exch def
+    /v exch def
+    1 setlinejoin
+    1 setlinecap
+    1.5 setlinewidth
+    0.9 line2
+    0.9 line9
+    0.9 line15
+    0.9 line21
+    3.25 setlinewidth
+    0.8 line1
+    0.8 line3
+    0.8 line4
+    0.8 line10
+    0.8 line11
+    0.8 line14
+    0.8 line16
+    0.8 line20
+    0.8 line22
+    0.8 d line23
+    0.8 d line25
+    v 1 eq {
+        0.8 line15
+        0.8 line21
+    } if
+    v 2 eq {
+        0.8 line21
+    } if
+    v 3 eq {
+        0.8 line2
+    } if
+end } def
+
+% Environment fadeout for flashback1A              % [11 frames]
+/environment5F {2 dict begin
+    /A exch def
+    /r exch def
+    r 11 le {
+        /w1 3.25 def      
+        /w2 0.159091 r mul 1.5 add def             % [11] 1.5 to 3.25
+        /gD 0.018182 r mul 0.6 add def             % [11] 0.6 to 0.8
+        /gL 0.00455 r mul neg 0.85 add def         % [11] 0.85 to 0.8
+        /G1 0.03864 r mul 0.6 add def              % [11] 0.6 to 1
+    }{
+        /w1 3.25 def
+        /w2 3.25 def
+        /gD 0.8 def
+        /gL 0.8 def
+    } ifelse
+    r swirl1
+    1 setlinejoin
+    1 setlinecap
+    w2 setlinewidth
+    gL line9
+    gL line15
+    gL line21
+    w1 setlinewidth
+    gD line1
+    gD line2
+    gD line3
+    gD line4
+    gD line10
+    gD line11
+    gD line14
+    gD line16
+    gD line20
+    gD line22
+    gD A line23
+    gD A line24
+    gD A line25
+end } def
+
+/environment6F {1 dict begin
+    /r exch def
+    /r r 44 sub def
+    /gD 0.054167 r mul neg 0.8 add def                      % [6] 0.8 to 0.475
+    /gL 0.029167 r mul neg 0.9 add def                      % [6] 0.9 to 0.725
+    /w1 0.291667 r mul 1.5 add def                          % [6] 1.5 to 3.25
+    /w2 3.25 def                            
+    1 setlinejoin
+    1 setlinecap
+    w1 setlinewidth
+    gL line15
+    gL line21
+    w2 setlinewidth
+    gD line1
+    gD line2
+    gD line3
+    gD line4
+    gD line10
+    gD line11
+end } def
+
+% Fade back in at end of flashback                                  % [5 frames]
+/environmentF3C {2 dict begin
+    /gD exch def
+    /v exch def
+    /v v 44 sub def
+    /gL gD 0.25 add def
+    v 3 ge { /w1 v 3 sub 0.58333 mul neg 3.25 add def } if          % [3] 3.25 to 1.5
+    /w2 3.25 def
+    1 setlinejoin
+    1 setlinecap
+    v 1 eq {
+        w2 setlinewidth
+        gD line44 } if
+    v 2 eq {
+        w2 setlinewidth
+        gD line45 } if
+    v 3 eq {
+        gL gD w2 w1 line46 } if
+    v 4 eq {
+        gL gD w2 w1 line47 } if
+    v 5 eq {
+        w1 setlinewidth
+        gL line15
+        gL line21
+        w2 setlinewidth
+        gD line48 } if
+    w2 setlinewidth
+    v 2 ge {
+        gD line10
+        gD line11 } if
+    v 3 ge {
+        gD line2
+        gD line3
+        gD line9 } if
+    v 4 ge {
+        gD line1
+        gD line4
+        gD line14 } if
+    v 5 ge {
+        gD line16 } if
+end } def
+
+% Lines spring up [4], pause [4]                            % [18 frames]
+/flashback1A {2 dict begin                                   
+    /A exch def
+    /r exch def
+    r A environment5F
+    r 10 gt {
+        1 setlinejoin
+        1 setlinecap
+        r 14 le {
+            /t r 10 sub 25 mul def                          % [4] 0 to 100
+            6.25 setlinewidth
+            0.3 t line40
+            0.3 t line41
+        }{
+            /w r 14 sub 0.375 mul neg 6.25 add def          % [4] 6.25 to 4.75
+            w setlinewidth
+            0.3 100 line40
+            0.3 100 line41 } ifelse
+    } if
+end } def
+
+% First fold-out (part 1) [12], pause [4]                   % [16 frames]
+/flashback1B {3 dict begin
+    /A exch def
+    /r exch def
+    /q exch def
+    r 12 le {
+        /a 7.5 r mul def                                    % [12] 0 to 90
+        /G1 0.0333 q mul neg 0.8 add def                    % [12] 0.8 to 0.4                  
+        /gG 0.025 r mul 0.1 add G1 add def                  % [12] 0.9 to 0.8
+        /w1 6.25 def
+    }{
+        /a 90 def
+        /q q 12 sub def
+        /G1 q 0.0125 mul 0.4 add def                        % [4] 0.4 to 0.45
+        /w1 0.375 q mul neg 6.25 add def                    % [4] 6.25 to 4.75
+    } ifelse
+    /gG G1 0.1 add def
+    r 12 lt { G1 G1 a gradient0
+    G1 G1 a gradient1
+    }{ 1 G1 1 gradient1b
+    1 G1 1 gradient0b } ifelse
+    1 A environmentF
+    linesetF
+    0.8 line9
+    G1 line1
+    G1 line3
+    G1 line10
+    G1 line11
+    1 2.5 0.3 a arc1
+    1 2.5 0.3 a arc2
+    4.25 setlinewidth
+    0.65 a line7
+    0.65 a line8
+    4.75 setlinewidth
+    a 90 lt { 0.3 a line35
+    0.3 a line36 } if
+    w1 setlinewidth
+    1 0.3 a line37
+end } def
+
+% First fold-out (part 2) [24], pause [7]                      % [31 frames]
+/flashback1C {3 dict begin                                     
+    /A exch def
+    /r exch def
+    /q exch def
+    /b 3.75 r mul def                                          % [24] 0 to 90
+    q 12 lt {
+        /G1 0.016667 q mul 0.45 add def                        % [12] 0.45 to 0.65
+        /G2 0.45 def
+    }{
+        /G1 0.65 def
+        /G2 q 12 sub 0.016667 mul 0.45 add def                 % [12] 0.45 to 0.65
+    } ifelse
+    /G3 0.01875 q mul neg 0.8 add def                          % [24] 0.8 to 0.35
+    q 24 eq { /G4 0.2 def } if
+    q 24 gt {
+        /q q 24 sub def
+        /G1 0.014286 q mul 0.65 add def                        % [7] 0.65 to 0.75
+        /G2 0.014286 q mul 0.65 add def                        % [7] 0.65 to 0.75
+        /G3 0.007143 q mul 0.35 add def                        % [7] 0.35 to 0.4
+        /b 90 def
+    } if
+    G3 G3 b gradient2
+    b 45 lt {
+        /x b 2 mul def
+        1 G2 1 gradient1b
+        2 G1 x gradient0b
+    }{
+        /x b 45 sub 2 mul def
+        2 G2 x gradient1b
+    } ifelse
+    r 24 gt { 550 300 1 100 square } if
+    1 A environmentF
+    linesetF
+    G3 line14
+    G3 line16
+    G1 line1
+    G1 line3
+    G1 line4
+    G2 line10
+    G2 line11
+    b 45 lt {
+        2 2.5 0.3 b arc1
+        1 2.5 0.3 90 arc2
+    }{
+        2 2.5 0.3 b arc2
+    } ifelse
+    1 2.5 0.3 b arc3
+    4.75 setlinewidth
+    0.3 b line12
+end } def
+
+% Lines for second fold-out [8], pause [4]                    % [12 frames]
+/flashback2A {2 dict begin
+    /A exch def
+    /r exch def
+    r 3 lt { /G1 0.025 r mul 0.75 add def                     % [2] 0.75 to 0.8
+    }{ /G1 0.8 def } ifelse
+    r 8 le {
+        /t 25 r mul def                                       % [8] 0 to 200
+        /G2 0.05 r mul 0.4 add def                            % [8] 0.4 to 0.8
+        /G3 0.0875 r mul 0.3 add def                          % [8] 0.3 to 1
+        /w 0.1875 r mul 4.75 add def                          % [8] 4.75 to 6.25
+        /w2 r 0.3125 mul neg 2.5 add def                      % [8] 2.5 to 0
+    }{
+        /t 200 def
+        /G1 0.8 def
+        /G2 0.8 def
+        /G3 1 def
+        /w r 8 sub 0.375 mul neg 6.25 add def                 % [4] 6.25 to 4.75
+        /w2 0 def
+    } ifelse
+    r 4 le { /x r 22.5 mul neg 90 add def
+    /x1 r 11.25 mul neg 90 add def
+    /v 2 def
+    2 G3 x gradient1b }
+    { /x r 4 sub 11.25 mul neg 90 add def
+    /x1 x def
+    /v 1 def
+    G3 G3 x gradient1 } ifelse
+    /y r 7.5 mul neg 90 add def
+    G3 G3 y gradient2
+    2 A environmentF
+    linesetF
+    0.8 line15
+    G1 line1
+    G1 line3
+    G1 line4
+    G1 line10
+    G1 line11
+    G3 G2 lt {
+        G2 line14
+        G2 line16
+        v 2.5 G3 x1 arc2
+        1 2.5 G3 y arc3
+    }{
+        v 2.5 G3 x1 arc2
+        1 2.5 G3 y arc3
+        linesetF
+        G2 line14
+        G2 line16
+    } ifelse
+    G1 line11
+    w setlinewidth
+    1 0.3 t line42
+    t 100 gt {
+        /u t 100 sub def
+        0.3 u line41
+    } if
+end } def
+
+% Second fold-out (part 1) [16], pause [4]                  % [20 frames]
+/flashback2B {3 dict begin
+    /A exch def
+    /r exch def
+    /q exch def
+    /b 5.625 r mul def                                      % [16] 0 to 90
+    /G1 0.025 q mul neg 0.8 add def                         % [16] 0.8 to 0.4
+    /w2 6.25 def
+    r 16 lt { G1 G1 b gradient1
+    G1 G1 b gradient2
+    }{ 1 G1 1 gradient2b
+    1 G1 1 gradient1b } ifelse
+    2 A environmentF
+    q 16 gt {
+        /q q 16 sub def
+        /b 90 def
+        /G1 0.0125 q mul 0.4 add def                        % [4] 0.4 to 0.45
+        /w1 0.1875 q mul neg 4.25 add def                   % [4] 4.25 to 3.5
+        /g 0.0625 q mul 0.65 add def                        % [4] 0.65 to 0.9
+        /w2 0.75 q mul neg 6.25 add def                     % [4] 6.25 to 4.75
+        /w3 1.375 q mul neg 8 add def                       % [4] 8 to 2.5
+        /s 0.025 q mul 0.9 add def                          % [4] 0.9 to 1
+        w1 setlinewidth
+        g b line8
+    } if
+    4.25 setlinewidth
+    r 16 eq { 0.65 b line8 } if
+    linesetF
+    0.8 line15
+    G1 line10
+    G1 line11
+    G1 line14
+    G1 line16
+    1 2.5 0.3 b arc2
+    1 2.5 0.3 b arc3
+    4.25 setlinewidth
+    r 16 lt { 0.65 b line8 } if
+    0.65 b line12
+    linesetF
+    4.75 setlinewidth
+    b 90 lt { 0.3 b line36
+    2 0.3 b line37 } if
+    w2 setlinewidth
+    1 0.3 b line38
+end } def
+
+% Second fold-out (part 2) [32], pause [7]                  % [39 frames]
+/flashback2C {3 dict begin
+    /A exch def
+    /r exch def
+    /q exch def
+    /c 2.8125 r mul def                                     % [32] 0 to 90
+    q 11 lt {
+        /G1 0.02 q mul 0.45 add def                         % [10] 0.45 to 0.65
+        /G2 0.45 def
+        /G4 0.01 q mul 0.45 add def                         % [10] 0.45 to 0.55
+    }{
+        /G1 0.65 def
+        /G2 q 10 sub 0.0091 mul 0.45 add def                % [22] 0.45 to 0.65
+        /G4 r 10 sub 0.01136 mul 0.55 add def               % [22] 0.55 to 0.8
+    } ifelse
+    /G3 0.0125 q mul neg 0.8 add def                        % [32] 0.8 to 0.4
+    /G5 0.3 def
+    q 32 eq { /G5 0.2 def } if
+    /w3 8 def
+    /s 0.9 def
+    q 32 gt {
+        /q q 32 sub def
+        /G1 0.014286 q mul 0.65 add def                        % [7] 0.65 to 0.75
+        /G2 0.014286 q mul 0.65 add def                        % [7] 0.65 to 0.75
+        /G3 0.007143 q mul 0.35 add def                        % [7] 0.35 to 0.4
+        /G4 0.8 def
+        /w3 0.7857 q mul neg 8 add def                         % [7] 8 to 2.5
+        /s 0.01429 q mul 0.9 add def                           % [7] 0.9 to 1
+        /c 90 def
+    } if
+    G3 G3 c gradient3
+    c 30 lt { /x c 3 mul def
+        1 G2 1 gradient2b
+        2 G1 x gradient1b
+    }{ /x c 30 sub 2 div 3 mul def
+        2 G2 x gradient2b } ifelse
+    r 32 gt { 350 75 1 350 100 rectangle } if
+    2 A environmentF
+    linesetF
+    G4 c line18
+    G3 line20
+    G3 line22
+    G1 line10
+    G1 line11
+    G2 line14
+    G2 line16
+    c 30 lt {
+        3 2.5 0.3 c arc2
+        1 2.5 0.3 90 arc3
+    }{
+        2 2.5 0.3 c arc3
+    } ifelse
+    1 2.5 G5 c arc4
+    4.75 setlinewidth
+    G5 c line17
+end } def
+
+% Lines for 3rd fold-out [12], pause [4]                        % [16 frames]
+/flashback3A {2 dict begin
+    /A exch def
+    /r exch def
+    r 3 lt { /G1 0.016667 r mul 0.75 add def                    % [2] 0.75 to 0.8
+    }{ /G1 0.8 def } ifelse
+    r 12 le {
+        /t 25 r mul def                                         % [12] 0 to 300 
+        /G2 0.033333 r mul 0.4 add def                          % [12] 0.4 to 0.8
+        /G3 0.058333 r mul 0.3 add def                          % [12] 0.3 to 1
+        /w 0.125 r mul 4.75 add def                             % [12] 4.75 to 6.25
+    }{
+        /t 300 def
+        /G1 0.8 def
+        /G2 0.8 def
+        /G3 1 def
+        /w r 12 sub 0.375 mul neg 6.25 add def                  % [4] 6.25 to 4.75
+    } ifelse
+    r 4 le { /x r 22.5 mul neg 90 add def
+    2 G3 x gradient2b }
+    { /x r 4 sub 7.5 mul neg 90 add def
+    G3 G3 x gradient2 } ifelse
+    /y r 5.625 mul neg 90 add def
+    G3 G3 y gradient3
+    3 A environmentF
+    linesetF
+    0.8 line21
+    G1 line10
+    G1 line11
+    G1 line14
+    G1 line16
+    G3 G2 lt {
+        G2 line20
+        G2 line22
+        1 2.5 G3 90 arc4
+    }{
+        1 2.5 G3 90 arc4
+        linesetF
+        G2 line20
+        G2 line22
+    } ifelse
+    w setlinewidth
+    0.3 t line43
+    t 100 gt {
+        /u t 100 sub def
+        2 0.3 u line42
+    } if
+end } def
+
+% Third fold-out (part 1) [24], pause [4]                   % [28 frames]
+/flashback3B {3 dict begin
+    /A exch def
+    /r exch def
+    /q exch def
+    /c 3.75 r mul def                                       % [24] 0 to 90
+    /G1 0.016667 q mul neg 0.8 add def                      % [24] 0.8 to 0.4
+    /w2 6.25 def
+    r 24 lt { G1 G1 c gradient2
+    G1 G1 c gradient3
+    }{ 1 G1 1 gradient3b
+    1 G1 1 gradient2b } ifelse
+    3 A environmentF
+    q 24 gt {
+        /q q 24 sub def
+        /G1 0.0125 q mul 0.4 add def                        % [4] 0.4 to 0.45
+        /c 90 def
+        /w1 0.1875 q mul neg 4.25 add def                   % [4] 4.25 to 3.5
+        /g 0.0625 q mul 0.65 add def                        % [4] 0.65 to 0.9
+        w1 setlinewidth
+        g c line12
+        3.25 setlinewidth
+        0.8 line4
+        /w2 0.75 q mul neg 6.25 add def                     % [4] 6.25 to 4.75
+    } if
+    linesetF
+    0.8 line21
+    4.25 setlinewidth
+    r 23 eq { 0.65 c line12
+    0.65 c line17 } if
+    r 24 eq { 0.65 c line12
+    0.65 c line17 } if
+    linesetF
+    G1 line14
+    G1 line16
+    G1 line20
+    G1 line22
+    1 2.5 0.3 c arc3
+    1 2.5 0.3 c arc4
+    4.25 setlinewidth
+    r 23 lt { 0.65 c line12
+    0.65 c line17 } if
+    linesetF
+    4.75 setlinewidth
+    c 90 lt { 2 0.3 c line37
+    2 0.3 c line38 } if
+    w2 setlinewidth
+    0.3 c line39
+end } def
+
+% Third fold-out (part 2) [44]                              % [49 frames]
+/flashback3C {3 dict begin
+    /A exch def
+    /r exch def
+    /q exch def
+    /d 1.8864 r mul def                                     % [44] 0 to 83
+    d A ge { /d A def } if
+    d 83 ge { /d A def } if
+    q 20 lt {
+        /G1 0.01053 q mul 0.45 add def                      % [19] 0.45 to 0.65
+        /G2 0.45 def
+        /G4 0.00526 q mul 0.45 add def                      % [19] 0.45 to 0.55
+    }{
+        /G1 0.65 def
+        /G2 q 19 sub 0.00689 mul 0.45 add def               % [25] 0.45 to 0.62241
+        /G4 r 19 sub 0.00862 mul 0.55 add def               % [25] 0.55 to 0.76552
+    } ifelse
+    /G3 0.008333 q mul neg 0.8 add def                      % [44] 0.8 to 0.43333
+    /G5 0.3 def
+    d A eq { /G5 0.2 def } if
+    /G6 G5 def
+    /w1 3.25 def
+    /w2 4.5 def
+    r 44 ge { /w2 3.25 def } if
+    r 44 gt {
+        /q q 44 sub def
+        /G1 0.029167 q mul neg 0.65 add def                 % [6] 0.65 to 0.475
+        /G2 0.024568 q mul neg 0.62241 add def              % [6] 0.62241 to 0.475
+        /G3 0.00695 q mul 0.4333 add def                    % [6] 0.4333 to 0.475
+        /G4 0.04842 q mul neg 0.76552 add def               % [6] 0.76552 to 0.475
+        /G5 0.13333 q mul 0.2 add def                       % [6] 0.2 to 1
+        /G6 0.04583 q mul 0.2 add def                       % [6] 0.2 to 0.475
+    } if
+    r 32 le { /gG2 G2 def
+        /gG3 G3 def
+    }{  /gG2 r 32 sub 0.00925 mul 0.67048 add def           % [14] 0.67048 to 0.8
+        /gG3 r 32 sub 0.01904 mul 0.53344 add def           % [14] 0.53344 to 0.8
+    } ifelse
+    r 40 le { 1 1 r swirl2 } if
+    gG3 gG3 d gradient4
+    d 36 lt { /x 5 2 div d mul def
+        1 gG2 1 gradient3b
+        2 G1 x gradient2b
+    }{ /x d 36 sub 3 div 5 mul def
+        r 44 le { 2 gG2 x gradient3b } if } ifelse
+    r 40 gt { gG2 gG3 r swirl2 } if
+    r 44 le { 3 A environmentF }
+    { r environment6F } ifelse
+    linesetF
+    w1 setlinewidth
+    G4 d line24
+    G3 A line25
+    G1 line14
+    G1 line16
+    G2 line20
+    G2 line22
+    d 36 lt {
+        3 2.5 0.3 d arc3
+        1 2.5 0.3 90 arc4
+    }{
+        2 2.5 G5 d arc4
+    } ifelse
+    1 2.5 G5 d arc5
+    linesetF
+    w2 setlinewidth
+    G6 d line23
+    r G6 environmentF3C
+end } def
+
+/Flashback {                 % [224 frames]
+    /h 0.125 def
+    /A 55 def   
+    /x 1 def
+    {   gsave                
+        A scale6
+        x A flashback1A
+        grestore
+        showpage
+        /x x 1 add def
+        /A A h add def
+        x 18 gt { exit } if
+    } loop
+    /x 1 def
+    {   gsave                
+        A scale6
+        x x A flashback1B
+        grestore
+        showpage
+        /x x 1 add def
+        /A A h add def
+        x 16 gt { exit } if
+    } loop
+    /x 1 def
+    {   gsave
+        A scale6
+        x x A flashback1C
+        grestore
+        showpage
+        /x x 1 add def
+        /A A h add def
+        x 31 gt { exit } if
+    } loop
+    /x 1 def
+    {   gsave               
+        A scale6
+        x A flashback2A
+        grestore
+        showpage
+        /x x 1 add def
+        /A A h add def
+        x 12 gt { exit } if 
+    } loop
+    /x 1 def
+    {   gsave
+        A scale6
+        x x A flashback2B
+        grestore
+        showpage
+        /x x 1 add def
+        /A A h add def
+        x 20 gt { exit } if 
+    } loop
+    /x 1 def
+    {   gsave
+        A scale6
+        x x A flashback2C
+        grestore
+        showpage
+        /x x 1 add def
+        /A A h add def
+        x 39 gt { exit } if
+    } loop
+    /x 1 def
+    {   gsave
+        A scale6
+        x A flashback3A
+        grestore
+        showpage
+        /x x 1 add def
+        /A A h add def
+        x 16 gt { exit } if
+    } loop
+    /x 1 def
+    {   gsave
+        A scale6
+        x x A flashback3B
+        grestore
+        showpage
+        /x x 1 add def
+        /A A h add def
+        x 28 gt { exit } if
+    } loop
+    /x 1 def
+    {   gsave
+        A scale6
+        x x A flashback3C
+        grestore
+        showpage
+        /x x 1 add def
+        /A A h add def
+        x 44 gt { exit } if
+    } loop
+    /h 0.16667 def
+    {   gsave
+        A scale5
+        x x A flashback3C
+        grestore
+        showpage
+        /x x 1 add def
+        /A A h add def
+        x 49 gt { exit } if
+    } loop
+} def
+
+/Scene1A {3 dict begin
+    /F3 exch def
+    /F2 exch def
+    /F1 exch def
+    % Walking onto screen, seeing box
+    F1 {
+        gsave
+        75 scale1
+        0 environment1
+        grestore
+        showpage
+    } repeat
+    %Walking towards box
+    /h 75 F2 div def
+    75 h neg 0 {
+        /i exch def
+        gsave
+        i scale1
+        0 environment1
+        grestore
+        showpage
+    } for
+    % Stopping in front of box
+    F3 {
+        gsave
+        0 scale1
+        0 environment1
+        grestore
+        showpage
+    } repeat
+end } def
+
+/Scene1B {3 dict begin
+    /F3 exch def
+    /F2 exch def
+    /F1 exch def
+    % Stepping closer to box and pushing wall out slightly
+    /h 4 F1 div def
+    0 h 4 {
+        /i exch def
+        gsave
+        0 scale1
+        i environment1
+        grestore
+        showpage
+    } for
+    % Pausing with wall pushed out
+    F2 {
+        gsave
+        0 scale1
+        4 environment1
+        grestore
+        showpage
+    } repeat
+    % Retracting slight push
+    /h 4 F3 div def
+    4 h neg 0 {
+        /i exch def
+        gsave
+        0 scale1
+        i environment1
+        grestore
+        showpage
+    } for
+end } def
+
+/Scene2A {3 dict begin
+    /F3 exch def
+    /F2 exch def
+    /F1 exch def
+    % Preparing for big push
+    F1 {
+        gsave
+        0 scale2A
+        0 environment1
+        grestore
+        showpage
+    } repeat
+    % Big push, falling down, second box forming
+    /h 90 F2 div def
+    0 h 90 {
+        /i exch def
+        gsave
+        i scale2A
+        i environment2
+        grestore
+        showpage
+    } for
+    % Exploring second box, jumping up and landing
+    1 1 F3 {
+        /i exch def
+        gsave
+        90 scale2A
+        i 0 environment3
+        grestore
+        showpage
+    } for
+end } def
+
+/Scene2B {3 dict begin
+    /F3 exch def
+    /F2 exch def
+    /F1 exch def
+    % Wall of third box folds out slightly from impact of jump
+    /h 4 F1 div def
+    0 h 4 {
+        /i exch def
+        gsave
+        i scale2B
+        0 i environment3
+        grestore
+        showpage
+    } for
+    % Wall of third box folds back in
+    /h 4 F2 div def
+    4 h neg 0 {
+        /i exch def
+        gsave
+        4 scale2B
+        0 i environment3
+        grestore
+        showpage
+    } for
+    % Prepares to jump, jumps and lands
+    F3 {
+        gsave
+        4 scale2B
+        0 0 environment3
+        grestore
+        showpage
+    } repeat
+end } def
+
+/Scene3A {4 dict begin
+    /F4 exch def
+    /F3 exch def
+    /F2 exch def
+    /F1 exch def
+    % Third box forming, falling down
+    /h 90 F1 div def
+    0 h 90 {
+        /i exch def
+        gsave
+        i scale3
+        0 i environment3
+        grestore
+        showpage
+    } for
+    % Recovering from fall, exploring third box
+    1 1 F2 {
+        /i exch def
+        gsave
+        90 scale3
+        i 0 environment4
+        grestore
+        showpage
+    } for
+    % Pushes wall of fourth box out slightly
+    /h 10 F3 div def
+    0 h 10 {
+        /i exch def
+        gsave
+        90 scale3
+        0 i environment4
+        grestore
+        showpage
+    } for
+    % Wall swings back in, catches wall with foot
+    /h 7 F4 div def
+    10 h neg 3 {
+        /i exch def
+        gsave
+        90 scale3
+        0 i environment4
+        grestore
+        showpage
+    } for
+end } def
+
+/Scene3B {4 dict begin
+    /F4 exch def
+    /F3 exch def
+    /F2 exch def
+    /F1 exch def
+    % Pause with leg retracted
+    F1 {
+        gsave
+        90 scale3
+        0 3 environment4
+        grestore
+        showpage
+    } repeat
+    % Leg extending, wall pushed out
+    /h 7 F2 div def
+    3 h 10 {
+        /i exch def
+        gsave
+        90 scale3
+        0 i environment4
+        grestore
+        showpage
+    } for
+    % Pause with leg extended
+    F3 {
+        gsave
+        90 scale3
+        0 10 environment4
+        grestore
+        showpage
+    } repeat
+    % Leg retracting, wall swinging in
+    /h 7.5 F4 div def
+    10 h neg 2.5 {
+        /i exch def
+        gsave
+        90 scale3
+        0 i environment4
+        grestore
+        showpage
+    } for
+end } def
+
+/Scene4A {3 dict begin
+    /F3 exch def
+    /F2 exch def
+    /F1 exch def
+    % Kicks wall out
+    /h 8 F1 div def
+    3 h 11 {
+        /i exch def
+        gsave
+        90 scale3
+        0 i environment4
+        grestore
+        showpage
+    } for
+    % Wall swings out from kick
+    /h 9 F2 div def
+    11 h 20 {
+        /i exch def
+        gsave
+        90 scale3
+        0 i environment4
+        grestore
+        showpage
+    } for
+    % Wall swings back in, skids back
+    /h 20 F3 div def
+    20 h neg 0 {
+        /i exch def
+        gsave
+        90 scale3
+        0 i environment4
+        grestore
+        showpage
+    } for
+end } def
+
+/Scene4B {3 dict begin
+    /F3 exch def
+    /F2 exch def
+    /F1 exch def
+    % Runs towards wall of fourth box
+    F1 {
+        gsave
+        0 scale4B
+        0 0 environment4
+        grestore
+        showpage
+    } repeat
+    % Fourth box forming, tripping and grabbing onto wall, losing grip
+    /h 90 F2 div def
+    0 h 90 {
+        /i exch def
+        gsave
+        i scale4B
+        0 i environment4
+        grestore
+        showpage
+    } for
+    % Wedged in top corner of fourth box, trying not to fall
+    1 1 F3 {
+        /i exch def
+        gsave
+        90 scale4B
+        1 i 0 environment5
+        grestore
+        showpage
+    } for
+end } def
+
+/Scene5A {3 dict begin
+    /F3 exch def
+    /F2 exch def
+    /F1 exch def
+    % Wall of fifth box pops open
+    /h 4 F1 div def
+    0 h 4 {
+        /i exch def
+        gsave
+        i scale5
+        1 0 i environment5
+        grestore
+        showpage
+    } for
+    % Looks up momentarily in surprise
+    /h 1 F2 div def
+    4 h 5 {
+        /i exch def
+        gsave
+        i scale5
+        1 0 i environment5
+        grestore
+        showpage
+    } for
+    % Gets grip on top of wall, prepares to kick off
+    /h 2 F3 div def
+    5 h 7 {
+        /i exch def
+        gsave
+        i scale5
+        1 0 i environment5
+        grestore
+        showpage
+    } for
+end } def    
+
+/Scene5B {3 dict begin
+    /F3 exch def
+    /F2 exch def
+    /F1 exch def
+    % Kicks off of fourth box, rides up, sees shadows, fifth box forming
+    /h 79 F1 div def
+    7 h 86 {
+        /i exch def
+        gsave
+        i scale5
+        1 0 i environment5
+        grestore
+        showpage
+    } for
+    % Loses grip, slipping
+    /h 6 F2 div def
+    86 h neg 80 {
+        /i exch def
+        gsave
+        i scale6
+        1 0 i environment5
+        grestore
+        showpage
+    } for
+    % Slipping, body catches, wall folding backwards with sudden force
+    /h 25 F3 div def
+    80 h neg 55 {
+        /i exch def
+        gsave
+        i scale6
+        1 0 i environment5
+        grestore
+        showpage
+    } for
+end } def
+
+/Scene6A {3 dict begin
+    /F3 exch def
+    /F2 exch def
+    /F1 exch def
+    %% Hanging on by one hand, wall has stopped moving
+    F1 {
+        gsave
+        55 scale6
+        1 0 55 environment5
+        grestore
+        showpage
+    } repeat
+    % Flashback, wall begins moving upwards slowly
+    Flashback
+    % Turns, grabs onto ledge, wall moving upwards at normal pace
+    /h 2 F3 div def
+    84 h 86 {
+        /i exch def
+        gsave
+        i scale5
+        2 0 i environment5
+        grestore
+        showpage
+    } for
+end } def
+
+/Scene6B {4 dict begin
+    /F4 exch def
+    /F3 exch def
+    /F2 exch def
+    /F1 exch def
+    % First swing-back
+    /h 2 F1 div def
+    86 h neg 84 {
+        /i exch def
+        gsave
+        i scale5
+        2 0 i environment5
+        grestore
+        showpage
+    } for
+    % First swing-forth
+    /h 3 F2 div def
+    84 h 87 {
+        /i exch def
+        gsave
+        84 scale5
+        2 0 i environment5
+        grestore
+        showpage
+    } for
+    % Second swing-back
+    /h 4 F3 div def
+    87 h neg 83 {
+        /i exch def
+        gsave
+        81 scale5
+        2 0 i environment5
+        grestore
+        showpage
+    } for
+    % Second swing-forth
+    /h 5 F4 div def
+    83 h 88 {
+        /i exch def
+        gsave
+        81 scale5
+        2 0 i environment5
+        grestore
+        showpage
+    } for
+end } def
+    
+/Scene7A {3 dict begin
+    /F3 exch def
+    /F2 exch def
+    /F1 exch def
+    % Third swing-back
+    /h 6 F1 div def
+    88 h neg 82 {
+        /i exch def
+        gsave
+        81 scale5
+        2 0 i environment5
+        grestore
+        showpage
+    } for
+    % Third swing-forth, kick wall
+    /h 8 F2 div def
+    82 h 90 {
+        /i exch def
+        gsave
+        i scale5
+        2 0 i environment5
+        grestore
+        showpage
+    } for
+    % Kick continues into formation of sixth box
+    /h 16 F3 div def
+    0 h 16 {
+        /i exch def
+        gsave
+        i scale7
+        i environment6
+        grestore
+        showpage
+    } for
+end } def
+
+/Scene7B {3 dict begin
+    /F3 exch def
+    /F2 exch def
+    /F1 exch def
+    % Wall slowing down
+    /h 14 F1 div def
+    16 h 30 {
+        /i exch def
+        gsave
+        i scale7
+        i environment6
+        grestore
+        showpage
+    } for
+    % Climbs up, jumps off, walks offscreen, sixth box forms at normal pace
+    /h 60 F2 div def
+    30 h 90 {
+        /i exch def
+        gsave
+        i scale7
+        i environment6
+        grestore
+        showpage
+    } for
+    % All six boxes formed, end
+    1 1 F3 {
+        /i exch def
+        gsave
+        90 scale7
+        i environment7
+        grestore
+        showpage
+    } for
+end } def
+
+% All arguments of the scenes are the number of frames in each segment of the animation
+%96 110 133 Scene1A  % [3] Walks onscreen; Walks towards box; Stands in front of box
+%2 4 6 Scene1B       % [3] Pushes wall; Pause; Retracts push
+%1 30 20 Scene2A     % [3] Prepares for push; Pushes and 2nd box forms; Explores 2nd box
+%4 6 1 Scene2B       % [3] Floor folds out; Floor folds in; Prepares to jump
+%25 15 40 120 Scene3A % [4] 3rd box forms; Recovers from fall; Pushes wall, Foot catches wall
+%1 13 1 13 Scene3B   % [4] Leg bent; Leg extends; Leg straight; Leg retracts (slow)
+%3 7 3 6 Scene3B     % [4] Leg bent; Leg extends; Leg straight; Leg retracts (fast)
+%2 6 2 5 Scene3B     % [4] Leg bent; Leg extends; Leg straight; Leg retracts (faster)
+%4 12 21 Scene4A      % [3] Kicks wall; Wall swings out; Wall swings in
+%10 300 20 Scene4B    % [3] Runs towards wall; 4th box forms; Caught in upper corner
+30 8 20 Scene5A      % [3] Top wall pops open; Looks up; Grabs onto top wall
+350 1 20 Scene5B      % [3] 5th box forms; loses grip; Body catches and wall folds back down
+1 224 10 Scene6A    % [3] Dangles one-handed; Flashback; Grabs ledge of wall
+20 20 20 20 Scene6B    % [4] Swing-back 1; Swing-forth 2; Swing-back 2; Swing-forth 2
+20 20 24 Scene7A    % [3] Swing-back3; Swing-forth 3 and kick; Wall of 6th box opens
+%30 100 20 Scene7B   % [3] Wall slows; 6th box forms; End
+
+
+
+%showpage
+%EOF
